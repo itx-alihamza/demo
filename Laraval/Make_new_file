@@ -1,0 +1,2 @@
+>To make new file go to resources/views/ here make file of name or change the name of existing file with .blade.php extention.
+>in order to work new file or renamed one we have to go to routes folder/web.php file and inside view function write the name of file 

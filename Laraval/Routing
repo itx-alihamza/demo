@@ -1,0 +1,93 @@
+//                            ROUTING IN LARAVEL:
+// 1.so routing is the process of mapping url to the page which means when we type url in the browser it will show the page which is mapped to that url
+// 2.Routing is simply making a new url in a project e.g making url for documentation,laravel news etc 
+// 3.One is by default exist 
+// 4.Two important things about routing
+//      url
+//      page 
+
+//                            Componenets used to make routing
+/ 
+/*
+"/" is used to define the root of the project
+*/ 
+::
+/*
+// In PHP, the double colon :: is defined as Scope Resolution Operator. It used when when we want to access constants, properties and methods defined at class level.
+// When referring to these items outside class definition, name of class is used along with scope resolution operator. 
+*/
+{}
+/*
+The curly braces {} around name indicate that name is a dynamic route parameter. In Laravel, dynamic route parameters allow you to capture segments of the URI.
+In this case, any value passed as a segment after the initial / in the URI will be captured and passed to the callback function as the $same parameter.
+For example:
+if you visit /john in your browser, 'john' will be passed to the callback function as the value of $same.
+*/
+Route Declaration:
+Route::get('/{name}', ...): //This line defines a route using the Route facade, specifically for HTTP GET requests (Route::get). The first argument '/{name}' is the URI pattern for the route. It contains a route parameter named {name} which captures any value provided in the URL.
+Route Handler Function:
+function($name) { ... }: //This is an anonymous function that serves as the handler for the route. It accepts one parameter, $name, which represents the value captured by the {name} parameter from the URL.
+Echo Statement:
+echo "The name is : ".$name;: //This line outputs a message to the browser indicating the name captured from the URL. The . operator is used for concatenation to combine the string "The name is : " with the value of $name.
+View Rendering:
+return view('welcome', ['name' => $name]);: //This line returns a view named welcome. In Laravel, views are typically located in the resources/views directory. Additionally, it passes data to the view using an associative array ['name' => $name], where the value of $name captured from the URL is passed to the view with the key 'name'.
+/*Route in usual form
+Route::get('/', function(){return view('urlname')});
+*/
+/*Route in short form
+Route::view('/', 'urlname');
+*/
+
+//                            HOW TO MAKE MULTIPLE ROUTING IN LARAVEL;
+// 1. Go to routes folder in laravel project
+// 2. Open web.php file
+// 3. Write the code for routing
+// 4. Save the file
+// 5. Run the server
+// 6. Open the browser and type the url
+// 7. The page will be shown
+// Example of routing in laravel:
+// Route::get('/documentation', function () {
+//     return view('documentation');
+// });
+//                 OR
+// Route::view('/documentation','documentation');here /documentation is the url and documentation is the page which is mapped to that url and page is in the view folder.
+
+//                            blade: 
+//blade is a templating engine in laravel which is used to make the page dynamic.
+
+//                            url in laravel:
+//url is the address of the page which is mapped to the page like www.google.com here google.com is the url and www is the domain
+
+//                            HOW TO PASS VALUE IN ROUTING :
+// 1. Go to routes folder in laravel project
+// 2. Open web.php file
+// 3. Write the code for routing
+// 4. Save the file
+// 5. Run the server
+
+// 6. For Example: 
+Route::get('/{name}', function($name){//name is dec
+    echo "The name is : ".$name;//. is used for concatenation and value of name will be given by the user at the time of url.
+//To take the name inside the view page we will take array and pass the value of name to the view page.
+    return view('welcome');//here name is the url and welcome is the page which is mapped to that url and page is in the view folder.
+});
+
+// 'Route::get() is a method used to define a route for handling HTTP GET requests
+// '/documentation/{id}' is the url and {id} is the parameter which is passed with the url
+// function ($id) is the function which is used to get the value of the parameter
+// return view('documentation',['id'=>$id]); is used to pass the value of the parameter to the page which is mapped to that url and page is in the view folder.
+
+// {{}}: Used to display the value of the variable in the view page
+
+//                           ANCHOR TAG
+//<a href="/urlname">Click here</a> is used to create a link in the page
+
+//                            REDIRECT
+//Route::redirect('urlname', 'viewfilename'); is used to redirect the page to another page
+//Route::get('/urlname', function(){ redirect('viewfilename')}); is used to redirect the page to another page
+Route::view("info", '/about');//Here we dont use / with url info because it is already in the url
+Route::get('/documentation', function () {//Here we use / with url documentation because it is not in the url
+    return view('documentation');
+});
+
