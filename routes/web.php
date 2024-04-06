@@ -31,8 +31,8 @@ use App\Http\Controllers\usercontroller;//importing controller
 Route::view("contact", 'contact');
 Route::view("info", 'about');
 
-// Route::get('/info', function(){ 
-//     return view('about');
-// });
+Route::get('/info', function(){ 
+    return view('about');
+});
 
 Route::get("user/{id}", [usercontroller::class, 'show']);
