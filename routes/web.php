@@ -13,6 +13,10 @@ use App\Http\Controllers\usercontroller;//importing controller
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/home', function () {
+//     return view('welcome');
+// });
+
+Route::view("info", 'about');
+
+Route::get("/{user}", [usercontroller::class, 'show']);
